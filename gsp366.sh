@@ -41,11 +41,14 @@ gsutil cp gs://${PROJECT_ID}/cosmetic-test-data/IMG_0769.png .
 
 # Step 9: Python environment setup
 sudo apt update
-sudo apt install -y python3 python3-pip python3-venv
-python3 -m venv myvenv
+sudo apt install python3 -y
+sudo apt install python3-pip -y
+sudo apt install python3.11-venv -y 
+python3 -m venv create myvenv
 source myvenv/bin/activate
-pip install --upgrade pip
-pip install absl-py numpy requests
+pip install absl-py  
+pip install numpy 
+pip install requests
 
 # Step 10: Run prediction for defective product
 python3 ./prediction_script.py \
