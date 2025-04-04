@@ -2,8 +2,11 @@
 
 # gsp366.sh - Automated setup and inference for defect detection
 
-# Step 2: Set Docker tag
-export DOCKER_TAG=gcr.io/ql-shared-resources-test/defect_solution@sha256:776fd8c65304ac017f5b9a986a1b8189695b7abbff6aa0e4ef693c46c7122f4c
+# Step 1: Name the artifact for clarity
+export COSMETIC_INSPECTION_MODEL=gcr.io/ql-shared-resources-test/defect_solution@sha256:776fd8c65304ac017f5b9a986a1b8189695b7abbff6aa0e4ef693c46c7122f4c
+
+# Step 2: Set Docker tag using named variable
+export DOCKER_TAG=${COSMETIC_INSPECTION_MODEL}
 
 # Step 3: Export required variables
 export VISERVING_CPU_DOCKER_WITH_MODEL=${DOCKER_TAG}
@@ -13,8 +16,8 @@ export LOCAL_METRIC_PORT=8603
 # Step 4: Pull Docker image
 docker pull ${VISERVING_CPU_DOCKER_WITH_MODEL}
 
-# Step 5: Run Docker container
-docker run -v /secrets:/secrets --rm -d --name "test_cpu" \
+# Step 5: Run Docker container as "product_inspection"
+docker run -v /secrets:/secrets --rm -d --name "product_inspection" \
   --network="host" \
   -p ${HTTP_PORT}:8602 \
   -p ${LOCAL_METRIC_PORT}:8603 \
@@ -43,7 +46,6 @@ python3 -m venv myvenv
 source myvenv/bin/activate
 pip install --upgrade pip
 pip install absl-py numpy requests
-
 
 # Step 10: Run prediction for defective product
 python3 ./prediction_script.py \
