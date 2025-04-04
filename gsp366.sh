@@ -3,10 +3,10 @@
 # gsp366.sh - Automated setup and inference for defect detection
 
 # Step 1: Name the artifact for clarity
-export COSMETIC_INSPECTION_MODEL=gcr.io/ql-shared-resources-test/defect_solution@sha256:776fd8c65304ac017f5b9a986a1b8189695b7abbff6aa0e4ef693c46c7122f4c
+export product_inspection=gcr.io/ql-shared-resources-test/defect_solution@sha256:776fd8c65304ac017f5b9a986a1b8189695b7abbff6aa0e4ef693c46c7122f4c
 
 # Step 2: Set Docker tag using named variable
-export DOCKER_TAG=${COSMETIC_INSPECTION_MODEL}
+export DOCKER_TAG=${product_inspection}
 
 # Step 3: Export required variables
 export VISERVING_CPU_DOCKER_WITH_MODEL=${DOCKER_TAG}
