@@ -51,13 +51,13 @@ pip install absl-py numpy requests
 python3 ./prediction_script.py \
   --input_image_file=./IMG_07703.png \
   --port=8602 \
-  --output_result_file=def_prediction_result.json
+  --output_result_file=defective_product.json
 
 # Step 11: Run prediction for non-defective product
 python3 ./prediction_script.py \
   --input_image_file=./IMG_0769.png \
   --port=8602 \
-  --output_result_file=non_def_prediction_result.json
+  --output_result_file=non_defective_product_result.json
 
 # Step 12: Run 10 predictions for latency test
 python3 ./prediction_script.py \
